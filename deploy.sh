@@ -10,6 +10,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:YitzBoi/tp3_appweb.git main:tp3_pages
+git push -f git@github.com:YitzBoi/tp3_appweb.git master:tp3_pages
 
 cd -
