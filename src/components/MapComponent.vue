@@ -2,20 +2,20 @@
   <div>
     <l-map style="height: 500px" :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-marker :lat-lng="markerLatLng"></l-marker>
+      <l-polyline :lat-lngs="polyline.latlngs" :color="blue"></l-polyline>
     </l-map>
   </div>
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
+import { LMap, LTileLayer, LPolyline } from 'vue2-leaflet'
 
 export default {
   name: 'Map',
   components: {
     LMap,
     LTileLayer,
-    LMarker
+    LPolyline
   },
   data () {
     return {
@@ -23,8 +23,8 @@ export default {
       attribution:
         '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 15,
-      center: [51.505, -0.159],
-      markerLatLng: [51.504, -0.159]
+      center: [46.78601339822761, -71.28621784239412],
+      markerLatLng: [46.78601339822761, -71.28621784239412]
     }
   }
 }
