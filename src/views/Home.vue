@@ -1,11 +1,15 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <MapComponent />
+  </div>
 </template>
 
 <script>
+import MapComponent from '../components/MapComponent.vue'
 // @ is an alias to /src
 
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: { MapComponent }
 }
 </script>
