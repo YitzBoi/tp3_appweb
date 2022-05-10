@@ -1,11 +1,14 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <ParkListComponent />
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import ParkListComponent from '../components/ParkListComponent.vue'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: { ParkListComponent }
 }
 </script>
