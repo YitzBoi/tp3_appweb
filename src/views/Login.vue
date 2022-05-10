@@ -35,7 +35,7 @@ export default {
       })
       if (!this.authServiceError) {
         this.$router.push({
-          name: 'Profile'
+          name: 'Home'
         })
       }
     }
