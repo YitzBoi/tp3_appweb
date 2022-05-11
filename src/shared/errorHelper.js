@@ -7,9 +7,6 @@ export function parseAxiosErrorToAppError (error) {
     )
     return appError
   } else {
-    // Les messsages d'erreurs générés par l'api rest local (json-server-auth) sont en anglais (exemple: Incorrect password, Cannot find user, etc.)
-    // Pour corriger ce problème, il faudrait coder nous même la gestion des autorisations au lieu d'utiliser json-server-auth.
-    // Dans le cadre du cours, on peut considérer que l'api rest en production générerait les erreurs en français...
     const appError = new AppError(
       error.response.data,
       error.response.statusText,

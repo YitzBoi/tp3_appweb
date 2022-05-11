@@ -1,38 +1,45 @@
-import { API } from '@/shared/config'
-import axios from 'axios'
+import mockAxios from 'axios'
 import { authService } from '@/services/authService'
 import { authJsonFake } from '@/../tests/data/authJsonFake'
-import MockAdapter from 'axios-mock-adapter'
 
-var mockAxios = new MockAdapter(axios)
+jest.mock('axios')
 
 let auth
 
 beforeEach(() => {
-  auth = [...authJsonFake]
-
-  mockAxios.reset()
+  auth = { ...authJsonFake }
+  jest.clearAllMocks()
 })
 
 describe('userService.js', () => {
   test('getToken doit retourner un token', async () => {
-    mockAxios.onPost(`${API}/login`).reply(201, auth)
+    mockAxios.post.mockResolvedValue(auth)
     const credential = {
       email: 'email@email.com',
       password: 'password'
     }
     const response = await authService.getToken(credential)
-    expect(auth.data).toEqual(response)
+    expect(response).toEqual(auth.data.accessToken)
   })
 
   test('registerToken doit retourner un token', async () => {
-    mockAxios.onPost(`${API}/register`).reply(201, auth)
+    mockAxios.post.mockResolvedValue(auth)
     const credential = {
       email: 'email@email.com',
       password: 'password',
       name: 'name'
     }
     const response = await authService.registerToken(credential)
-    expect(auth.data).toEqual(response)
+    expect(response).toEqual(auth.data.accessToken)
+  })
+
+  test('GetToken doit lever une exception si les données de connexions entrées ne sont pas valides', async () => {
+    const credential = {
+      email: 'email@email.com',
+      password: 'password'
+    }
+    mockAxios.post.mockRejectedValue(new Error())
+
+    await expect(authService.getToken(credential)).rejects.toThrow()
   })
 })
