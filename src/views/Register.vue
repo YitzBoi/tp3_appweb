@@ -4,12 +4,17 @@
       <b-form @submit.prevent="register">
         <h1>Créer un compte</h1>
         <label>Courriel</label>
-        <b-form-input required v-model="email" type="text" />
+        <b-form-input id="email" required v-model="email" type="text" />
         <label>Nom d'utilisateur</label>
-        <b-form-input required v-model="name" type="text" />
+        <b-form-input id="name" required v-model="name" type="text" />
 
         <label>Mot de passe</label>
-        <b-form-input required v-model="password" type="password" />
+        <b-form-input
+          id="password"
+          required
+          v-model="password"
+          type="password"
+        />
         <b-button type="submit" variant="primary" class="mt-4"
           >Créer le compte</b-button
         >

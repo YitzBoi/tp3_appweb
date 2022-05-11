@@ -75,4 +75,24 @@ describe('Login.vue', () => {
       password: 'password'
     })
   })
+
+  test('un espace texte pour entrer un email apparait', async () => {
+    const wrapper = await loginShallowMount()
+    wrapper.find('#email').setValue(ANY_VALID_DATA.email)
+
+    expect(wrapper.vm.email).toBe(ANY_VALID_DATA.email)
+  })
+
+  test('un espace texte pour entrer un password apparait', async () => {
+    const wrapper = await loginShallowMount()
+    wrapper.find('#password').setValue(ANY_VALID_DATA.password)
+
+    expect(wrapper.vm.password).toBe(ANY_VALID_DATA.password)
+  })
+
+  test('un espace texte pour entrer un authServiceError apparait', async () => {
+    const wrapper = await loginShallowMount()
+
+    expect(wrapper.vm.authServiceError).toBeFalsy()
+  })
 })
