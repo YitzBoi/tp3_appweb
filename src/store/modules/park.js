@@ -1,5 +1,4 @@
 import { parkService } from '@/services/parkService'
-import { trailService } from '@/services/trailService'
 
 const state = {
   id: '',
