@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       parks: [],
-      clickedPark: ''
+      clickedPark: ' '
     }
   },
   async created () {
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     changeSelectedPark (id) {
-      this.$store.dispatch('selectedPark/setPark', id)
+      this.$store.dispatch('park/setPark', id)
     }
   }
 }

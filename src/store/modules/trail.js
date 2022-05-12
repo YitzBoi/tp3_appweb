@@ -11,14 +11,18 @@ const state = {
 const getters = {}
 
 const mutations = {
-  initializePark (state, trail, score, segments) {
+  initializeTrail (state, trail) {
     state.trailName = trail.name
-    state.trailSegments = segments
-    state.trailScore = score
     state.onError = false
   },
   setOnError (state) {
     state.onError = true
+  },
+  initializeScore (state, score) {
+    state.trailScore = score
+  },
+  initializeSegments (state, segments) {
+    state.trailSegments = segments
   }
 }
 
@@ -27,8 +31,10 @@ const actions = {
     try {
       const trail = await trailService.getTrailById(id)
       const score = await trailService.getTrailScore(id)
-      const segments = await trailService.getAllSegments(id)
-      commit('initializeTrail', trail, score, segments)
+      const segments = await trailService.getAllSegments(trail.segments)
+      commit('initializeTrail', trail)
+      commit('initializeScore', score)
+      commit('initializeSegments', segments)
     } catch (error) {
       commit('setOnError')
     }
