@@ -1,22 +1,14 @@
 import { parkService } from '@/services/parkService'
-// import trailsService
+import { trailService } from '@/services/trailService'
 
 const state = {
   id: '',
   name: '',
-  // trails: [],
-  // selectedTrailName: '',
-  // selectedTrailSegmentsId: [],
-  // selectedTrailCoords: [],
-  // selectedTrailScore: ''
+  trails: [],
   onError: false
 }
 
-const getters = {
-  getPreuve: state => {
-    return state.id
-  }
-}
+const getters = {}
 
 const mutations = {
   initializePark (state, park) {
@@ -32,7 +24,6 @@ const mutations = {
 const actions = {
   async setPark ({ commit, state }, id) {
     try {
-      console.log('yep!' + id)
       const park = await parkService.getParkById(id)
       commit('initializePark', park)
     } catch (error) {
