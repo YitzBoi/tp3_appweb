@@ -1,8 +1,20 @@
 <template>
   <div class="home">
-    <ParkListComponent />
-    <TrailListComponent />
-    <MapComponent />
+    <div class="row">
+      <div class="container col-6">
+        <div class="row">
+          <div class="col-12"><ParkListComponent /></div>
+        </div>
+        <div class="row">
+          <div class="col-12"><TrailListComponent /></div>
+        </div>
+      </div>
+      <div class="container col-6">
+        <div class="row">
+          <div class="col-12"><MapComponent /></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 <template>
   <div>
     <select
+      class="form-control"
       v-model="clickedPark"
       @change="changeSelectedPark(clickedPark)"
       text="Button text via Prop"

@@ -2,6 +2,7 @@
   <div>
     <div class="form-group">
       <select
+        class="form-control"
         v-model="clickedTrail"
         @change="changeSelectedTrail(clickedTrail)"
         size="6"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <l-map style="height: 500px" :zoom="zoom" :center="center">
+    <l-map style="height: 500px; width: 500px;" :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-polyline
         v-for="segment in segments"
@@ -39,7 +39,6 @@ export default {
   methods: {
     changeDifficulty (difficulty) {
       this.changeCenter()
-      this.resetZoom()
       switch (difficulty) {
         case 'Très Difficile':
           return 'red'
@@ -52,9 +51,6 @@ export default {
         case 'Inconnue':
           return 'black'
       }
-    },
-    resetZoom () {
-      this.zoom = 6
     },
     changeCenter () {
       this.center = this.$store.state.trail.trailSegments[0].coordinates[0]
