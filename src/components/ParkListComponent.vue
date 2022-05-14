@@ -1,6 +1,7 @@
 <template>
   <div>
     <select
+      id="parkSelector"
       class="form-control"
       v-model="clickedPark"
       @change="changeSelectedPark(clickedPark)"
@@ -28,6 +29,7 @@ export default {
   },
   methods: {
     changeSelectedPark (id) {
+      this.clickedPark = id
       this.$store.dispatch('park/setPark', id)
     }
   }
