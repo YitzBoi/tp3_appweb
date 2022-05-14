@@ -33,4 +33,29 @@ describe('ParkListComponent.vue', () => {
     console.log(parksList)
     expect(parksList).toStrictEqual(parkNames)
   })
+
+  test('Lorsque la page est chargé, un parc est selectionné par défaut dans le select', async () => {
+    const wrapper = await shallowMount(ParkListComponent)
+
+    await flushPromises()
+
+    let initPark = wrapper.find('p').text()
+
+    expect(initMsg).toContain('Millennium Falcon')
+    console.log(parksList)
+    expect(parksList).toStrictEqual(parkNames)
+  })
+
+  test('Lorsque la page est chargé, current park est le premier de la liste', async () => {
+    const wrapper = await shallowMount(ParkListComponent)
+
+    await flushPromises()
+
+    console.log(parksList)
+    expect(parksList).toStrictEqual(parkNames)
+  })
+
+  test("Lorsqu'un parc est selectionné, le currentPark doit changer", async () => {})
+
+  test("Lorsqu'un parc est selectionné, le currentPark doit être envoyé au store", async () => {})
 })

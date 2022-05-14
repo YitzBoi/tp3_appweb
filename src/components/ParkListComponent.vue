@@ -4,13 +4,8 @@
       class="form-control"
       v-model="clickedPark"
       @change="changeSelectedPark(clickedPark)"
-      text="Button text via Prop"
     >
-      <option
-        v-for="park in parks"
-        v-bind:value="park.id"
-        v-bind:key="park.name"
-      >
+      <option v-for="park in parks" v-bind:value="park.id" v-bind:key="park.id">
         {{ park.name }}
       </option>
     </select>
@@ -28,7 +23,8 @@ export default {
   },
   async created () {
     this.parks = await parkService.getAllParksOrderByName()
-    this.clickedPark = this.parks[0].name
+    this.clickedPark = this.parks[0].id
+    this.changeSelectedPark(this.clickedPark)
   },
   methods: {
     changeSelectedPark (id) {
