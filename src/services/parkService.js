@@ -4,7 +4,7 @@ import { parseAxiosErrorToAppError } from '@/shared/errorHelper'
 
 async function getAllParksOrderByName () {
   try {
-    const { data } = await requestInterceptor.get(`${API}/parks`)
+    const { data } = await requestInterceptor.get(`${API}/parks/`)
     return data.sort(function (a, b) {
       return a.name.localeCompare(b.name)
     })

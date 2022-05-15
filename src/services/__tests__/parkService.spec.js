@@ -19,6 +19,13 @@ describe('parkService.js', () => {
     expect(response).toEqual(parks)
   })
 
+  test('getAllParksOrderByName leve une exception si une erreur survient', async () => {
+    mockRequestInterceptor.get.mockRejectedValueOnce()
+
+    const response = await parkService.getAllParksOrderByName()
+    expect(response).toEqual(parks)
+  })
+
   test("getParkById retourne le parc lier à l'id", async () => {
     const id = 0
     mockRequestInterceptor.get.mockResolvedValue(parks[id])
