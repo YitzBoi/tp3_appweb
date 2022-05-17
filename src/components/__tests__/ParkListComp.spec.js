@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import ParkListComponent from '@/components/ParkListComponent.vue'
 import { parkService } from '@/services/parkService.js'
 import { parksJsonFake } from '@/../tests/data/parksJsonFake.js'
@@ -97,11 +97,13 @@ describe('ParkListComponent.vue', () => {
         }
       }
     })
-
+    const storeDispatch = jest.spyOn(wrapper.vm.$store, 'dispatch')
     await flushPromises()
 
     wrapper.vm.changeSelectedPark(2)
 
-    expect(store.dispatch).toHaveBeenCalled()
+    expect(storeDispatch).toHaveBeenCalled()
+    expect(storeDispatch).toHaveBeenCalledWith('park/setPark', 1)
+    expect(storeDispatch).toHaveBeenCalledWith('park/setPark', 2)
   })
 })

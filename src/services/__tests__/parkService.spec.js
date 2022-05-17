@@ -13,7 +13,8 @@ beforeEach(() => {
 
 describe('parkService.js', () => {
   test('getAllParksOrderByName retourne une liste trier des parcs', async () => {
-    mockRequestInterceptor.get.mockResolvedValue(parks)
+    let getMocked = { data: parks }
+    mockRequestInterceptor.get.mockResolvedValue(getMocked)
 
     const response = await parkService.getAllParksOrderByName()
     expect(response).toEqual(parks)
@@ -28,9 +29,18 @@ describe('parkService.js', () => {
 
   test("getParkById retourne le parc lier à l'id", async () => {
     const id = 0
-    mockRequestInterceptor.get.mockResolvedValue(parks[id])
+    let getMocked = { data: parks[id] }
+    mockRequestInterceptor.get.mockResolvedValue(getMocked)
 
-    const response = await parkService.getAllParksOrderByName(id)
+    const response = await parkService.getParkById(id)
+    expect(response).toEqual(parks[id])
+  })
+
+  test('getParkById leve une exception si une erreur survient', async () => {
+    const id = 0
+    mockRequestInterceptor.get.mockRejectedValueOnce()
+
+    const response = await parkService.getParkById(id)
     expect(response).toEqual(parks)
   })
 })
