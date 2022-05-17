@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     changeSelectedTrail (id) {
+      this.clickedTrail = id
       this.$store.dispatch('trail/setTrail', id)
     }
   },
