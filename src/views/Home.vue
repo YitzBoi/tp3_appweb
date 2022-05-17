@@ -1,17 +1,17 @@
 <template>
   <div class="home">
     <div class="row">
-      <div class="container col-6">
+      <div class="container col-4 mr-auto">
         <div class="row">
-          <div class="col-12"><ParkListComponent /></div>
+          <div class="col-12 mt-5"><ParkListComponent /></div>
         </div>
         <div class="row">
-          <div class="col-12"><TrailListComponent /></div>
+          <div class="col-12 mt-5"><TrailListComponent /></div>
         </div>
       </div>
-      <div class="container col-6">
+      <div class="container col-4 mr-auto">
         <div class="row">
-          <div class="col-12"><MapComponent /></div>
+          <div class="col-12 mt-5"><MapComponent /></div>
         </div>
       </div>
     </div>

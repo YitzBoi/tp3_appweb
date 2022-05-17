@@ -1,6 +1,6 @@
 <template>
   <div>
-    <l-map style="height: 500px; width: 500px;" :zoom="zoom" :center="center">
+    <l-map style="height: 500px; width: auto;" :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-polyline
         v-for="segment in segments"
