@@ -45,18 +45,8 @@ async function getSegmentById (id) {
   }
 }
 
-async function getTrailScore (id) {
-  try {
-    const { data } = await requestInterceptor.get(`${API}/trails/${id}/likes`)
-    return data.length
-  } catch (error) {
-    throw parseAxiosErrorToAppError(error)
-  }
-}
-
 export const trailService = {
   getTrailsByParkId,
   getTrailById,
-  getAllSegments,
-  getTrailScore
+  getAllSegments
 }
