@@ -3,6 +3,7 @@ import { LikeService } from '../../services/likeService'
 
 const state = {
   // infos for current trail
+  trailId: 0,
   trailName: '',
   trailSegments: [],
   trailScore: 0,
@@ -13,6 +14,7 @@ const getters = {}
 
 const mutations = {
   initializeTrail (state, trail) {
+    state.trailId = trail.id
     state.trailName = trail.name
     state.onError = false
   },
