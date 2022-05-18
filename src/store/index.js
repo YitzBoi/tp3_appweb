@@ -4,6 +4,7 @@ import authentication from './modules/authentication'
 import profile from './modules/profile'
 import park from './modules/park'
 import trail from './modules/trail'
+import likes from './modules/likes'
 
 import VuexPersistence from 'vuex-persist'
 
@@ -26,7 +27,8 @@ export default new Vuex.Store({
     authentication,
     profile,
     park,
-    trail
+    trail,
+    likes
   },
   plugins: [vuexLocal.plugin]
 })
