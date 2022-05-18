@@ -23,16 +23,18 @@
 export default {
   data () {
     return {
-      clickedTrail: ''
+      clickedTrail: ' '
     }
   },
   async created () {
-    this.clickedTrail = 'none'
+    this.clickedTrail = 42
+    this.changeSelectedTrail(this.clickedTrail)
   },
   methods: {
     changeSelectedTrail (id) {
       this.clickedTrail = id
       this.$store.dispatch('trail/setTrail', id)
+      this.$store.dispatch('likes/updateLikes', this.clickedTrail)
     }
   },
   computed: {

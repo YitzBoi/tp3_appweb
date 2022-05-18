@@ -5,7 +5,7 @@ import { parseAxiosErrorToAppError } from '@/shared/errorHelper'
 async function getTrailLikes (id) {
   try {
     const { data } = await requestInterceptor.get(`${API}/trails/${id}/likes`)
-    return data.length
+    return data
   } catch (error) {
     throw parseAxiosErrorToAppError(error)
   }
@@ -13,34 +13,25 @@ async function getTrailLikes (id) {
 
 async function postLike (like) {
   try {
-    const response = await requestInterceptor.post(`${API}/likes`, {
+    await requestInterceptor.post(`${API}/likes`, {
       userId: like.userId,
       trailId: like.trailId
     })
-    const token = response.data.accessToken
-    return token
   } catch (error) {
     throw parseAxiosErrorToAppError(error)
   }
 }
 
-/*
-async function deleteLikeByUserId (userId) {
+async function deleteLike (id) {
   try {
-    const response = await requestInterceptor.delete(`${API}/register`, {
-      userId: like.userId,
-      trailId: like.trailId,
-      id: like.id
-    })
-    const token = response.data.accessToken
-    return token
+    await requestInterceptor.delete(`${API}/likes/${id}`)
   } catch (error) {
     throw parseAxiosErrorToAppError(error)
   }
 }
-*/
 
 export const LikeService = {
   getTrailLikes,
-  postLike
+  postLike,
+  deleteLike
 }
