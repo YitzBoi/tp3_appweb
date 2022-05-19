@@ -45,12 +45,13 @@ describe('trail.js', () => {
       const commit = jest.fn()
       const trailFake = trailsList[0]
       trailService.getTrailById.mockResolvedValue(trailFake)
-      trailService.getAllSegments.mockRejectedValue(fakeSegments)
+      trailService.getAllSegments.mockResolvedValue(fakeSegments)
 
       await trail.actions.setTrail({ commit }, 1)
 
       expect(trailService.getTrailById).toHaveBeenCalled()
       expect(trailService.getAllSegments).toHaveBeenCalled()
+      expect(commit).toHaveBeenCalled()
     })
 
     test("setTrail si l'api plante alors onError est vrai", async () => {

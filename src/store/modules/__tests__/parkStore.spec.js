@@ -50,6 +50,7 @@ describe('park.js', () => {
 
       expect(trailService.getTrailsByParkId).toHaveBeenCalled()
       expect(parkService.getParkById).toHaveBeenCalled()
+      expect(commit).toHaveBeenCalled()
     })
 
     test("setPark si l'api plante alors onError est vrai", async () => {
