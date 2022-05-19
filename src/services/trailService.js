@@ -21,19 +21,15 @@ async function getTrailsByParkId (id) {
 }
 
 async function getAllSegments (listSeg) {
-  const liste = []
-  /* try {
-    const { data } = await requestInterceptor.get(
-      `${API}/trails/${id}/segments/`
-    )
-    return data
-  } catch (error) {
-    throw parseAxiosErrorToAppError(error)
-  } */
-  listSeg.forEach(async element => {
-    liste.push(await getSegmentById(element))
-  })
-  return liste
+  const segmentsList = []
+  let currentSeg
+  await Promise.all(
+    listSeg.map(async segment => {
+      currentSeg = await getSegmentById(segment)
+      segmentsList.push(currentSeg)
+    })
+  )
+  return segmentsList
 }
 
 async function getSegmentById (id) {
@@ -48,5 +44,6 @@ async function getSegmentById (id) {
 export const trailService = {
   getTrailsByParkId,
   getTrailById,
-  getAllSegments
+  getAllSegments,
+  getSegmentById
 }
