@@ -76,7 +76,7 @@ describe('Login.vue', () => {
     })
   })
 
-  test("se connecter doit envoyer le login et doit renvoyer sur l'accueil", async () => {
+  test('se connecter ne doit pas fonctionner quand les valeurs ne sont pas valide', async () => {
     const routerPush = jest.fn()
     const wrapper = await shallowMount(Login, {
       mocks: {

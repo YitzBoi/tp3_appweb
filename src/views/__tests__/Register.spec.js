@@ -78,6 +78,40 @@ describe('Register.vue', () => {
     })
   })
 
+  test('se creer un compte ne doit pas fonctionner quand les valeurs ne sont pas valide', async () => {
+    const routerPush = jest.fn()
+    const wrapper = await shallowMount(Register, {
+      mocks: {
+        $store: {
+          state: {
+            authentication: {
+              authServiceError: true
+            }
+          },
+          dispatch: jest.fn(),
+          commit: jest.fn(),
+          $router: {
+            push: () => routerPush()
+          }
+        }
+      },
+      stubs: {
+        'b-link': BLink,
+        'b-button': BButton,
+        'b-form-input': BFormInput,
+        'b-form': BForm,
+        'b-container': BContainer
+      }
+    })
+
+    await flushPromises()
+
+    await wrapper.find('form').trigger('submit.prevent')
+
+    expect(routerPush).toHaveBeenCalledTimes(0)
+    expect(store.dispatch).toHaveBeenCalledTimes(0)
+  })
+
   test('un espace texte pour entrer un email apparait', async () => {
     const wrapper = await registerShallowMount()
     wrapper.find('#email').setValue(ANY_VALID_DATA.email)
