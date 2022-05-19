@@ -64,6 +64,10 @@ describe('trailService.js', () => {
 
   test('getAllSegments leve une exception si une erreur survient', async () => {
     // Test de solidité
+    let listRandom = [0]
+    mockRequestInterceptor.get.mockRejectedValue(new Error())
+
+    await expect(trailService.getAllSegments(listRandom)).rejects.toThrow()
   })
 
   test("getSegmentById retourne le segment attache a l'id", async () => {
@@ -78,5 +82,9 @@ describe('trailService.js', () => {
 
   test('getSegmentById leve une exception si une erreur survient', async () => {
     // Test de solidité
+    const id = 0
+    mockRequestInterceptor.get.mockRejectedValue(new Error())
+
+    await expect(trailService.getSegmentById(id)).rejects.toThrow()
   })
 })

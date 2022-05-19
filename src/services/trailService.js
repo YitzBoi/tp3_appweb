@@ -21,13 +21,15 @@ async function getTrailsByParkId (id) {
 }
 
 async function getAllSegments (listSeg) {
-  const liste = []
-  listSeg.forEach(async element => {
-    liste.push(await getSegmentById(element))
-    console.log(liste)
-  })
-  console.log(liste)
-  return liste
+  const segmentsList = []
+  let currentSeg
+  await Promise.all(
+    listSeg.map(async segment => {
+      currentSeg = await getSegmentById(segment)
+      segmentsList.push(currentSeg)
+    })
+  )
+  return segmentsList
 }
 
 async function getSegmentById (id) {
