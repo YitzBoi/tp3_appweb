@@ -54,7 +54,7 @@ const actions = {
   },
   async deleteLike ({ commit, state }, userId) {
     try {
-      let likeId = 0
+      let likeId = -10
       state.likesList.forEach(like => {
         if (like.userId === userId) {
           likeId = like.id

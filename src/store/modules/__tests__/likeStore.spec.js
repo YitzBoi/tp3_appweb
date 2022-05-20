@@ -12,7 +12,7 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
-describe('park.js', () => {
+describe('likes.js', () => {
   describe('mutations', () => {
     test('updateLikes change les infos des likes', async () => {
       const state = { likes: 420, likesList: [] }
@@ -75,24 +75,41 @@ describe('park.js', () => {
       expect(commit).toHaveBeenCalledWith('setOnError')
     })
 
-    test('updateIsLiked peut etre appelee', async () => {
+    test('updateIsLiked si le user a aimer alors userLikeStatus recevera true', async () => {
       const commit = jest.fn()
-      const state = { likes: 420, likesList: [] }
+      const state = { likes: 420, likesList: fakeLikesList, isLiked: false }
 
-      await likes.actions.updateIsLiked({ commit, state }, 1)
+      await likes.actions.updateIsLiked({ commit: commit, state: state }, 1)
 
-      expect(LikeService.getTrailLikes).toHaveBeenCalled()
-      expect(commit).toHaveBeenCalled()
+      expect(commit).toHaveBeenCalledWith('userLikeStatus', true)
     })
 
-    test("updateIsLiked si l'api plante alors onError est vrai", async () => {
+    test("updateIsLiked si le user n'a pas aimer alors userLikeStatus recevera false", async () => {
       const commit = jest.fn()
-      LikeService.getTrailLikes.mockRejectedValue(new Error())
+      const state = { likes: 420, likesList: fakeLikesList, isLiked: false }
 
-      try {
-        await likes.actions.updateIsLiked({ commit }, 1)
-      } catch (e) {}
+      await likes.actions.updateIsLiked({ commit: commit, state: state }, 41)
 
+      expect(commit).toHaveBeenCalledWith('userLikeStatus', false)
+    })
+
+    test('deleteLike si le user a aimé alors supprimé', async () => {
+      const commit = jest.fn()
+      const state = { likes: 420, likesList: fakeLikesList, isLiked: false }
+
+      await likes.actions.deleteLike({ commit: commit, state: state }, 1)
+
+      expect(LikeService.deleteLike).toHaveBeenCalledWith(1)
+    })
+
+    test("deleteLike si le user n'a pas aimé alors erreur", async () => {
+      const commit = jest.fn()
+      const state = { likes: 420, likesList: fakeLikesList, isLiked: false }
+      LikeService.deleteLike.mockRejectedValue(new Error())
+
+      await likes.actions.deleteLike({ commit: commit, state: state }, 11223)
+
+      expect(LikeService.deleteLike).toHaveBeenCalledWith(-10)
       expect(commit).toHaveBeenCalledWith('setOnError')
     })
   })
