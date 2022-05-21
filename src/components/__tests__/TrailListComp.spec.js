@@ -1,6 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
 import TrailListComponent from '@/components/TrailListComponent.vue'
-import { trailService } from '@/services/trailService.js'
 import { trailJsonFake } from '@/../tests/data/trailJsonFake.js'
 import flushPromises from 'flush-promises'
 import { resetAllWhenMocks } from 'jest-when'
@@ -98,7 +97,7 @@ describe('TrailListComponent.vue', () => {
 
     wrapper.vm.changeSelectedTrail(2)
 
-    let trail = wrapper.vm.clickedTrail
+    const trail = wrapper.vm.clickedTrail
 
     expect(trail).toStrictEqual(2)
   })

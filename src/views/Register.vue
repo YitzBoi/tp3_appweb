@@ -26,6 +26,7 @@
 
 <script>
 export default {
+  name: 'Register',
   created () {
     this.$store.commit('authentication/clearError')
   },

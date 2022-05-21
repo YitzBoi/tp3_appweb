@@ -23,6 +23,7 @@
 </template>
 <script>
 export default {
+  name: 'Login',
   created () {
     this.$store.commit('authentication/clearError')
   },

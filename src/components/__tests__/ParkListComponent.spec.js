@@ -50,7 +50,7 @@ describe('ParkListComponent.vue', () => {
 
     await flushPromises()
 
-    let initPark = wrapper.find('#parkSelector').element.value
+    const initPark = wrapper.find('#parkSelector').element.value
 
     expect(initPark).toContain('1')
   })
@@ -66,7 +66,7 @@ describe('ParkListComponent.vue', () => {
 
     await flushPromises()
 
-    let initPark = wrapper.vm.clickedPark
+    const initPark = wrapper.vm.clickedPark
 
     expect(initPark).toStrictEqual(1)
   })
@@ -84,7 +84,7 @@ describe('ParkListComponent.vue', () => {
 
     wrapper.vm.changeSelectedPark(2)
 
-    let park = wrapper.vm.clickedPark
+    const park = wrapper.vm.clickedPark
 
     expect(park).toStrictEqual(2)
   })
