@@ -13,7 +13,7 @@ beforeEach(() => {
 
 describe('parkService.js', () => {
   test('getAllParksOrderByName retourne une liste trier des parcs', async () => {
-    let getMocked = { data: parks }
+    const getMocked = { data: parks }
     mockRequestInterceptor.get.mockResolvedValue(getMocked)
 
     const response = await parkService.getAllParksOrderByName()
@@ -21,15 +21,14 @@ describe('parkService.js', () => {
   })
 
   test('getAllParksOrderByName leve une exception si une erreur survient', async () => {
-    mockRequestInterceptor.get.mockRejectedValueOnce()
+    mockRequestInterceptor.get.mockRejectedValue(new Error())
 
-    const response = await parkService.getAllParksOrderByName()
-    expect(response).toEqual(parks)
+    expect(parkService.getAllParksOrderByName()).rejects.toThrow()
   })
 
   test("getParkById retourne le parc lier à l'id", async () => {
     const id = 0
-    let getMocked = { data: parks[id] }
+    const getMocked = { data: parks[id] }
     mockRequestInterceptor.get.mockResolvedValue(getMocked)
 
     const response = await parkService.getParkById(id)
@@ -37,10 +36,7 @@ describe('parkService.js', () => {
   })
 
   test('getParkById leve une exception si une erreur survient', async () => {
-    const id = 0
-    mockRequestInterceptor.get.mockRejectedValueOnce()
-
-    const response = await parkService.getParkById(id)
-    expect(response).toEqual(parks)
+    mockRequestInterceptor.get.mockRejectedValue(new Error())
+    expect(parkService.getParkById(-1)).rejects.toThrow()
   })
 })

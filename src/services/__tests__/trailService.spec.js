@@ -17,7 +17,7 @@ beforeEach(() => {
 describe('trailService.js', () => {
   test("getTrailById retourne le sentier attaché à l'id", async () => {
     const id = 0
-    let getMocked = { data: trails[id] }
+    const getMocked = { data: trails[id] }
     mockRequestInterceptor.get.mockResolvedValue(getMocked)
 
     const response = await trailService.getTrailById(id)
@@ -34,7 +34,7 @@ describe('trailService.js', () => {
 
   test('getTrailsByParkId retourne le sentier attaché au parc', async () => {
     const id = 0
-    let getMocked = { data: trails[id] }
+    const getMocked = { data: trails[id] }
     mockRequestInterceptor.get.mockResolvedValue(getMocked)
 
     const response = await trailService.getTrailsByParkId(id)
@@ -51,9 +51,9 @@ describe('trailService.js', () => {
 
   test('getAllSegments retourne les segment données par la liste', async () => {
     // Le json de segment est vide!!!!
-    let listRandom = [0]
-    let getMocked = { data: segments[0] }
-    let listAll = []
+    const listRandom = [0]
+    const getMocked = { data: segments[0] }
+    const listAll = []
     listAll.push(segments[0])
 
     mockRequestInterceptor.get.mockResolvedValue(getMocked)
@@ -64,7 +64,7 @@ describe('trailService.js', () => {
 
   test('getAllSegments leve une exception si une erreur survient', async () => {
     // Test de solidité
-    let listRandom = [0]
+    const listRandom = [0]
     mockRequestInterceptor.get.mockRejectedValue(new Error())
 
     await expect(trailService.getAllSegments(listRandom)).rejects.toThrow()
@@ -72,7 +72,7 @@ describe('trailService.js', () => {
 
   test("getSegmentById retourne le segment attache a l'id", async () => {
     // Le json de segment est vide!!!!
-    let getMocked = { data: segments[0] }
+    const getMocked = { data: segments[0] }
 
     mockRequestInterceptor.get.mockResolvedValue(getMocked)
 
