@@ -1,7 +1,6 @@
 export const likesJsonFake = [
-  { userId: 1, trailId: 322, id: 0 },
-  { userId: 1, trailId: 293, id: 1 },
-  { userId: 2, trailId: 375, id: 2 },
-  { userId: 2, trailId: 695, id: 3 }
+  { userId: 1, trailId: 3, id: 0 },
+  { userId: 2, trailId: 3, id: 1 },
+  { userId: 3, trailId: 3, id: 2 },
+  { userId: 4, trailId: 3, id: 3 }
 ]
-// CHANGER LES IDs DE TRAILS!!!!!!!

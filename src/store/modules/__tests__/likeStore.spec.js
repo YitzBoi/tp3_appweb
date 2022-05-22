@@ -95,11 +95,11 @@ describe('likes.js', () => {
 
     test('deleteLike si le user a aimé alors supprimé', async () => {
       const commit = jest.fn()
-      const state = { likes: 420, likesList: fakeLikesList, isLiked: false }
+      const state = { likes: 420, likesList: fakeLikesList, isLiked: true }
 
       await likes.actions.deleteLike({ commit: commit, state: state }, 1)
 
-      expect(LikeService.deleteLike).toHaveBeenCalledWith(1)
+      expect(LikeService.deleteLike).toHaveBeenCalled()
     })
 
     test("deleteLike si le user n'a pas aimé alors erreur", async () => {

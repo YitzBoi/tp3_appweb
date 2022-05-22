@@ -1,3 +1,4 @@
+import { API } from '@/shared/config'
 import mockRequestInterceptor from '@/shared/requestInterceptor'
 import { LikeService } from '@/services/likeService'
 import { likesJsonFake } from '@/../tests/data/likesJsonFake'
@@ -31,10 +32,10 @@ describe('LikeService.js', () => {
     mockRequestInterceptor.post.mockResolvedValue(0)
 
     await LikeService.postLike(likes[id])
-    expect(mockRequestInterceptor.post).toHaveBeenCalledWith(
-      'undefined/likes',
-      { trailId: 322, userId: 1 }
-    )
+    expect(mockRequestInterceptor.post).toHaveBeenCalledWith(`${API}/likes`, {
+      trailId: 3,
+      userId: 1
+    })
   })
 
   test('postLike leve une exception si une erreur survient', async () => {
@@ -49,9 +50,7 @@ describe('LikeService.js', () => {
     mockRequestInterceptor.delete.mockResolvedValue(0)
 
     await LikeService.deleteLike(id)
-    expect(mockRequestInterceptor.delete).toHaveBeenCalledWith(
-      'undefined/likes/0'
-    )
+    expect(mockRequestInterceptor.delete).toHaveBeenCalledWith(`${API}/likes/0`)
   })
 
   test('deleteLike leve une exception si une erreur survient', async () => {

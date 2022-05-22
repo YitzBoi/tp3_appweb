@@ -33,12 +33,16 @@ html {
   padding: 30px;
 }
 
-#nav a {
+#nav a.nav-link {
   font-weight: bold;
-  color: #2c3e50;
+  color: #1c4b36;
 }
 
 #nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+p {
   color: #42b983;
 }
 </style>

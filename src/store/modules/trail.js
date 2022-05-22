@@ -1,7 +1,6 @@
 import { trailService } from '@/services/trailService'
 
 const state = {
-  // infos for current trail
   trailId: 0,
   trailName: '',
   trailSegments: [],

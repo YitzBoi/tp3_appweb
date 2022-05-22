@@ -7,16 +7,16 @@
       width="20"
     />
     <div v-else>
-      <button class="btn btn-primary" v-if="!isLiked" @click="saveLike()">
+      <button id="disliked" class="btn" v-if="!isLiked" @click="saveLike()">
         <b-icon icon="heart"></b-icon>
       </button>
-      <button class="btn btn-primary" v-else @click="deleteLike()">
+      <button id="liked" class="btn" v-else @click="deleteLike()">
         <b-icon icon="heart-fill"></b-icon>
       </button>
     </div>
-    <p>{{ nbLikes }}</p>
-    <p></p>
-    <p></p>
+    <p id="likes">{{ nbLikes }}</p>
+    <p id="park">{{ clickedPark }}</p>
+    <p id="trail">{{ trailName }}</p>
   </div>
 </template>
 
@@ -39,7 +39,22 @@ export default {
         this.$store.dispatch('likes/updateLikes', this.trailId)
         this.isLoading = false
       } else {
-        console.log('not logged in')
+        const confirmed = await this.$bvModal.msgBoxConfirm(
+          "Vous n'êtes pas authentifié, voulez vous vous créer un compte?",
+          {
+            cancelTitle: 'Non',
+            okTitle: 'Oui',
+            bodyBgVariant: 'dark',
+            bodyTextVariant: 'success',
+            footerBgVariant: 'dark',
+            okVariant: 'success'
+          }
+        )
+        if (confirmed === true) {
+          this.$router.push({
+            name: 'Register'
+          })
+        }
       }
     },
     async deleteLike () {
@@ -49,12 +64,24 @@ export default {
         this.$store.dispatch('likes/updateLikes', this.trailId)
         this.isLoading = false
       } else {
-        console.log('not logged in')
+        const confirmed = await this.$bvModal.msgBoxConfirm(
+          "Vous n'êtes pas authentifié, voulez vous vous créer un compte?",
+          {
+            cancelTitle: 'Non',
+            okTitle: 'Oui',
+            bodyBgVariant: 'dark',
+            bodyTextVariant: 'success',
+            footerBgVariant: 'dark',
+            okVariant: 'success'
+          }
+        )
+        if (confirmed === true) {
+          this.$router.push({
+            name: 'Register'
+          })
+        }
       }
     }
-  },
-  created () {
-    this.$store.dispatch('likes/updateIsLiked', this.userId)
   },
   computed: {
     nbLikes () {
@@ -82,9 +109,33 @@ export default {
         return this.$store.getters['likes/isLiked']
       }
       return false
+    },
+    trailName () {
+      return this.$store.state.trail.trailName
+    },
+    clickedPark () {
+      return this.$store.state.park.name
     }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+#disliked {
+  color: white;
+  font-size: large;
+}
+
+#liked {
+  color: lightgreen;
+  font-size: large;
+}
+
+#disliked:hover {
+  color: lightgreen;
+}
+
+#liked:hover {
+  color: red;
+}
+</style>
