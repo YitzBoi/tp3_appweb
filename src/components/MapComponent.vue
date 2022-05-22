@@ -3,6 +3,7 @@
     <l-map style="height: 500px; width: auto;" :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-polyline
+        class="segments"
         v-for="segment in segments"
         v-bind:key="segment.id"
         :lat-lngs="segment.coordinates"
