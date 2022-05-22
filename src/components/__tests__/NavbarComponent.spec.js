@@ -1,11 +1,23 @@
 import { shallowMount, RouterLinkStub } from '@vue/test-utils'
 import NavbarComponent from '@/components/NavbarComponent.vue'
 
-jest.mock('@/views/Home.vue')
+beforeEach(() => {
+  jest.clearAllMocks()
+})
 
 describe('NavigationBar.vue', () => {
-  test('doit contenir tous les liens', async () => {
+  test('doit contenir un lien pour se register et se login', async () => {
     const wrapper = shallowMount(NavbarComponent, {
+      mocks: {
+        $route: {
+          name: ''
+        },
+        $store: {
+          getters: {
+            'authentication/isLoggedIn': false
+          }
+        }
+      },
       stubs: {
         RouterLink: RouterLinkStub
       }

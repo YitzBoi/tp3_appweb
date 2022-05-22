@@ -21,7 +21,12 @@
         >
       </div>
       <div class="navbar-nav ml-auto">
-        <b-link @click="logout" v-if="isLoggedIn" class="nav-link">
+        <b-link
+          id="disconnect"
+          @click="logout"
+          v-if="isLoggedIn"
+          class="nav-link"
+        >
           Se déconnecter
         </b-link>
 
@@ -41,6 +46,7 @@
 
 <script>
 export default {
+  name: 'Navbar',
   computed: {
     isLoggedIn () {
       return this.$store.getters['authentication/isLoggedIn']
