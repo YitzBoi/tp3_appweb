@@ -15,7 +15,7 @@
           v-model="password"
           type="password"
         />
-        <b-button type="submit" variant="primary" class="mt-4"
+        <b-button type="submit" variant="success" class="mt-4"
           >Créer le compte</b-button
         >
       </b-form>

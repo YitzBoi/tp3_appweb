@@ -35,7 +35,7 @@ html {
 
 #nav a.nav-link {
   font-weight: bold;
-  color: #1c4b36;
+  color: #246146;
 }
 
 #nav a.router-link-exact-active {
@@ -43,6 +43,14 @@ html {
 }
 
 p {
+  color: #42b983;
+}
+
+h1 {
+  color: #42b983;
+}
+
+label {
   color: #42b983;
 }
 </style>

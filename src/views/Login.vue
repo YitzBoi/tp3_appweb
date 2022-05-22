@@ -12,7 +12,7 @@
           v-model="password"
           type="password"
         />
-        <b-button variant="primary" type="submit" class="mt-4"
+        <b-button variant="success" type="submit" class="mt-4"
           >Se connecter</b-button
         >
       </b-form>

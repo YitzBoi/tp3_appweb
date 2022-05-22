@@ -74,7 +74,6 @@ function createMockStore () {
 }
 
 describe('LikesComponent.vue', () => {
-  // utilisateur non connecte ne peut pas like
   test('un utilisateur non connecté ne peut pas like une trail', async () => {
     liked = false
     loggedIn = false
@@ -86,7 +85,7 @@ describe('LikesComponent.vue', () => {
 
     expect(msgBoxConfirm).toHaveBeenCalled()
   })
-  // utilisateur connecte peut like
+
   test('un utilisateur connecté peut like une trail', async () => {
     liked = false
     loggedIn = true
@@ -99,7 +98,7 @@ describe('LikesComponent.vue', () => {
 
     expect(saveLike).toHaveBeenCalled()
   })
-  // utilisatteur connecte peut dislike
+
   test('un utilisateur connecté peut dislike une trail', async () => {
     liked = true
     loggedIn = true
@@ -112,7 +111,7 @@ describe('LikesComponent.vue', () => {
 
     expect(dislike).toHaveBeenCalled()
   })
-  // nombres de likes est affiche
+
   test('il est possible de voir le nombre de likes', async () => {
     const wrapper = await likeShallowMount()
 
@@ -122,7 +121,7 @@ describe('LikesComponent.vue', () => {
 
     expect(likes).toBe(ANY_NB_LIKES.toString())
   })
-  // nom trail affiche / nom park affiche
+
   test('il est possible de voir le nom du parc', async () => {
     const wrapper = await likeShallowMount()
 

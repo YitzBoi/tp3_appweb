@@ -17,10 +17,6 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
-    // Code en commentaire ci-dessous: voir note de cours "Conserver les données dans le navigateur"
-    // meta: {
-    //   authPage: true
-    // }
   },
   {
     path: '/register',
