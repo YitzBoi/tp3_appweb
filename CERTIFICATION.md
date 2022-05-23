@@ -7,6 +7,8 @@ Nous, les membres de l’équipe, certifions que :
 - Zackary G Tremblay a contribué au travail pratique dans une proportion de 50%.
 - Dave Tremblay a contribué au travail pratique dans une proportion de 50%.
 
+- LIEN GITHUB: https://github.com/YitzBoi/tp3_appweb.git
+
 ## Bonus développé
 
 ## Exemples de pourcentage
